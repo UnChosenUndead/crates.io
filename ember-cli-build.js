@@ -7,6 +7,15 @@ module.exports = function (defaults) {
   let isProd = env === 'production';
 
   let extraPublicTrees = [];
+  if (!isProd) {
+    const path = require('node:path');
+    const funnel = require('broccoli-funnel');
+
+    let mswPath = require.resolve('msw/mockServiceWorker.js');
+    let mswParentPath = path.dirname(mswPath);
+
+    extraPublicTrees.push(funnel(mswParentPath, { include: ['mockServiceWorker.js'] }));
+  }
 
   let browsers = require('./config/targets').browsers;
 
@@ -15,6 +24,7 @@ module.exports = function (defaults) {
       setConfig: {
         '@ember-data/store': {
           polyfillUUID: true,
+          disableEntropyCach: true,
         },
       },
     },

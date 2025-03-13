@@ -20,13 +20,8 @@ module.exports = function (defaults) {
   let browsers = require('./config/targets').browsers;
 
   let app = new EmberApp(defaults, {
-    '@embroider/macros': {
-      setConfig: {
-        '@ember-data/store': {
-          polyfillUUID: true,
-          disableEntropyCach: true,
-        },
-      },
+    emberData: {
+      polyfillUUID: true
     },
 
     autoImport: {

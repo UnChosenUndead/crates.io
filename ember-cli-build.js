@@ -4,7 +4,9 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   let env = EmberApp.env();
+  let isProd = env === 'production';
 
+  let extraPublicTrees = [];
 
   let browsers = require('./config/targets').browsers;
 

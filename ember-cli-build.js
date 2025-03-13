@@ -4,18 +4,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   let env = EmberApp.env();
-  let isProd = env === 'production';
 
-  let extraPublicTrees = [];
-  if (!isProd) {
-    const path = require('node:path');
-    const funnel = require('broccoli-funnel');
-
-    let mswPath = require.resolve('msw/mockServiceWorker.js');
-    let mswParentPath = path.dirname(mswPath);
-
-    extraPublicTrees.push(funnel(mswParentPath, { include: ['mockServiceWorker.js'] }));
-  }
 
   let browsers = require('./config/targets').browsers;
 

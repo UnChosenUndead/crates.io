@@ -7,9 +7,9 @@ x-backend: &backend
     DATABASE_URL: postgres://postgres:password@postgres/cargo_registry
     SESSION_KEY: badkeyabcdefghijklmnopqrstuvwxyzabcdef
     GIT_REPO_URL: file:///app/tmp/index-bare
-    GH_CLIENT_ID: ""
-    GH_CLIENT_SECRET: ""
-    WEB_ALLOWED_ORIGINS: http://localhost:8888,http://localhost:4200
+    GH_CLIENT_ID: "Ov23liyrVqiRF5yBLgbi"
+    GH_CLIENT_SECRET: "b49111a688a22648e596221a2c1ade19c6b7d609"
+    WEB_ALLOWED_ORIGINS: http://terribleidea.ru:8888,http://terribleidea.ru:4200
   links:
     - postgres
   volumes:
@@ -29,7 +29,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     ports:
-      - 127.0.0.1:5432:5432
+      - 127.0.0.1:5438:5438
     volumes:
       - ./docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
       - postgres-data:/var/lib/postgresql/data
